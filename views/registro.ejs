@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Atividades - Registro</title>
+    <link rel="stylesheet" href="./css/registro.css">
+
+</head>
+<body>
+    <div class="container">
+        <h1><strong>Registro</strong></h1>
+        <div class="card">
+            <div class="card-header">
+                <h3>Registro</h3>
+            </div>
+            <div class="card-body">
+                <form id="registrationForm" method="post" action="/registro">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome" required>
+                    </div><br>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu email" required>
+                    </div><br>
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" class="form-control" id="senha" name="password" placeholder="Digite sua senha" required>
+                    </div><br>
+                    <button type="submit" class="btn">Registrar</button>
+                    <a href="/" class="btn">Login</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

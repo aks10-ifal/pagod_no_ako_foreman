@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat</title>
+  <link rel="stylesheet" type="text/css" href="./css/chat.css">
+</head>
+<body>
+  <form id="chat">
+    <div class="messages"></div>
+    <input type="text" name="message" placeholder="Digite sua mensagem aqui">
+    <button type="submit">Enviar</button>
+  </form>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js"></script>
+  <script>
+    $(document).ready(function() {
+      const socket = io();
+
+      socket.on('chat history', function(history) {
+        history.forEach(msg => {
+          $('.messages').append($('<div>').text(msg.nome + ': ' + msg.texto));
+        });
+      });
+
+      $('#chat').submit(function(e) {
+        e.preventDefault();
+        const message = $('input[name="message"]').val();
+        socket.emit('chat message', { texto: message });
+        $('input[name="message"]').val('');
+        return false;
+      });
+
+      socket.on('chat message', function(msg) {
+        $('.messages').append($('<div>').text(msg.nome + ': ' + msg.texto));
+      });
+    });
+  </script>
+</body>
+</html>

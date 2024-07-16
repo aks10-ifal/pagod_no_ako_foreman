@@ -1,0 +1,79 @@
+CREATE TABLE participantes (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100),
+    email VARCHAR(100),
+    senha VARCHAR(100)
+);
+
+
+CREATE TABLE gerente (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100),
+    sobrenome VARCHAR(100),
+    email VARCHAR(100),
+    senha VARCHAR(100)
+);
+
+CREATE TABLE projeto (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100),
+    descricao VARCHAR(255),
+    prazo DATE,
+    id_gerente INT,
+    FOREIGN KEY (id_gerente) REFERENCES gerente(id)
+);
+
+CREATE TABLE tarefa (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    titulo VARCHAR(100),
+    status VARCHAR(50),
+    prazo DATE,
+    id_participante INT,
+    descricao TEXT,
+    FOREIGN KEY (id_participante) REFERENCES participantes(id),
+);
+
+CREATE TABLE mensagem (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_remetente INT,
+    id_destinatario INT,
+    texto TEXT,
+    data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_remetente) REFERENCES participantes(id),
+    FOREIGN KEY (id_destinatario) REFERENCES participantes(id)
+);
+
+
+CREATE TABLE tarefas_participantes (
+    id_tarefa INT,
+    id_participante INT,
+    PRIMARY KEY (id_tarefa, id_participante),
+    FOREIGN KEY (id_tarefa) REFERENCES tarefa(id),
+    FOREIGN KEY (id_participante) REFERENCES participantes(id)
+);
+
+CREATE TABLE projetos_gerentes (
+    id_gerente INT,
+    id_projeto INT,
+    PRIMARY KEY (id_gerente, id_projeto),
+    FOREIGN KEY (id_gerente) REFERENCES gerente(id),
+    FOREIGN KEY (id_projeto) REFERENCES projeto(id)
+);
+
+CREATE TABLE projetos_participantes (
+    id_projeto INT,
+    id_participante INT,
+    PRIMARY KEY (id_projeto, id_participante),
+    FOREIGN KEY (id_projeto) REFERENCES projeto(id),
+    FOREIGN KEY (id_participante) REFERENCES participantes(id)
+);
+
+CREATE TABLE bate_papo (
+    id_projeto INT,
+    id_participante INT,
+    mensagem TEXT,
+    data TIMESTAMP,
+    PRIMARY KEY (id_projeto, id_participante),
+    FOREIGN KEY (id_projeto) REFERENCES projeto(id),
+    FOREIGN KEY (id_participante) REFERENCES participantes(id)
+);

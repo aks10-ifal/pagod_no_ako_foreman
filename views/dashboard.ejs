@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Projetos</title>
+    <link rel="stylesheet" type="text/css" href="./css/dashboard.css">
+</head>
+<body> 
+    <div class="sidebar">
+        <h2>Seja Bem Vindo</h2>
+        <h2><%= nomeUsuario %></h2> <!-- Exibe o nome do usuário logado -->
+        <a href="/logout" class="exit-button">
+            <img src="https://i.ibb.co/XJdXBb9/Pngtree-exit-door-line-icon-vector-5079406.png" alt="Ícone de saída">
+        </a>
+    </div>
+    <div class="content">
+        <div class="project">
+            <h3>Gerenciar Tarefas</h3>
+            <a href="/listarAtividades">Listagem das Tarefas</a>
+        </div>
+        
+        </div>
+        <a href="/chat" class="message-icon"><img src="https://i.ibb.co/TL2WfJZ/balao-de-bate-papo.png" alt="balao-de-bate-papo"></a>
+    </div>
+</body>
+</html>

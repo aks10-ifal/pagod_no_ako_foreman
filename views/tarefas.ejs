@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Atividades - Tarefas</title>
+    <link rel="stylesheet" href="./css/tarefas.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1><strong>Tarefas</strong></h1>
+        <div class="card">
+            <div class="card-header">
+                <h3>Tarefas</h3>
+            </div>
+            <div class="card-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome da Tarefa</th>
+                            <th>Status</th>
+                            <th>Prazo</th>
+                            <th>Progresso</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="taskTableBody">
+                        <% tarefas.forEach(function(tarefa) { %>
+                            <tr>
+                                <td><%= tarefa.titulo %></td>
+                                <td><%= tarefa.status %></td>
+                                <td><%= tarefa.prazo %></td>
+                                <td><%= tarefa.progresso %></td>
+                                <td>
+                                    <% if (isGerente) { %>
+                                        <a href="/tarefas/editar/<%= tarefa.id %>" class="btn">Editar</a>
+                                        <a href="/tarefas/excluir/<%= tarefa.id %>" class="btn">Excluir</a>
+                                    <% } else { %>
+                                        <!-- Ações para participantes, se houver -->
+                                    <% } %>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+                <% if (isGerente) { %>
+                    <a href="/tarefas/criar" class="btn">Adicionar Nova Tarefa</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

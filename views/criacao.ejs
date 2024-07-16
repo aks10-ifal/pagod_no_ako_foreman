@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criação</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card-header {
+            background-color: #f5f5f5;
+            color: #333;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-text {
+            font-size: 16px;
+        }
+
+        .btn {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+            color: #fff;
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .form-control:focus {
+            color: #495057;
+            background-color: #fff;
+            border-color: #80bdff;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><strong>Adicionar Nova Atividade</strong></h1>
+        <div class="card">
+            <div class="card-header">
+                <h3>Adicionar Nova Atividade</h3>
+            </div>
+            <div class="card-body">
+                <form id="activityForm" action="/criarAtividade" method="POST">
+                    <div class="form-group">
+                        <label for="activityName">Nome da Atividade</label>
+                        <input type="text" class="form-control" id="activityName" name="titulo" placeholder="Digite o nome da atividade" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="activityDesc">Descrição</label>
+                        <textarea class="form-control" id="activityDesc" name="descricao" rows="3" placeholder="Digite a descrição da atividade"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="activityStatus">Status</label>
+                        <select class="form-control" id="activityStatus" name="status">
+                            <option value="pendente">Pendente</option>
+                            <option value="em progresso">Em Progresso</option>
+                            <option value="concluída">Concluída</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="activityDeadline">Prazo</label>
+                        <input type="date" class="form-control" id="activityDeadline" name="prazo">
+                    </div>
+                    <button type="submit" class="btn">Adicionar Atividade</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
